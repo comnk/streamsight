@@ -7,6 +7,8 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.EnumType;
 
 import lombok.Data;
 
@@ -22,6 +24,15 @@ public class Video {
     private String title;
 
     private Instant timestamp;
+
+    private Long fileSize;
+
+    private Long duration;
+
+    private String storagePath;
+
+    @Enumerated(EnumType.STRING)
+    private VideoStatus status;
 
     public Video() {
     }
