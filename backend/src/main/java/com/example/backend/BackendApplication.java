@@ -1,13 +1,27 @@
 package com.example.backend;
 
+import java.util.Map;
+import java.util.HashMap;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
+@EnableAsync
+@RestController
 public class BackendApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BackendApplication.class, args);
 	}
 
+	@GetMapping("/health")
+	public String healthCheck() {
+		Map<String, Object> response = new HashMap<>();
+		response.put("status", "UP");
+		return response.toString();
+	}
 }
